@@ -1,0 +1,43 @@
+﻿<Window x:Class="FMAApp.NewRecipeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FMAApp"
+        mc:Ignorable="d"
+        Title="Neues Rezept" Height="250" Width="300">
+    <Grid Background="#E6E4FE">
+        <StackPanel>
+            <TextBlock Text="Name?" FontSize="28" Margin="10,10,0,0"/>
+            <TextBox x:Name="NameTextBox" Margin="10,20,10,10" Height="30" FontSize="16"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="cancelButton" Content="Abbrechen" Height="40" Width="120" Margin="20,20,0,20" Click="cancelButton_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#8E9AAF"/>
+                            <GradientStop Color="#757F91" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="createButton" Content="Erstellen" Height="40" Width="120" Margin="20,20,0,20" Click="createButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#8E9AAF"/>
+                            <GradientStop Color="#757F91" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
