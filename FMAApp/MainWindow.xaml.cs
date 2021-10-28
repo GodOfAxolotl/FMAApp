@@ -20,7 +20,7 @@ namespace FMAApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<string> list = new List<string>();
+       List<string> list = new List<string>();
 
         public MainWindow()
         {
