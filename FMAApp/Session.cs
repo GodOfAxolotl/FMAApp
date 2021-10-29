@@ -10,7 +10,7 @@ namespace FMAApp
     {
         public Session()
         {
-
+            
         }
 
         public void loop()

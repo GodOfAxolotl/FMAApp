@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="600">
+        Title="MainWindow" Height="650" Width="600" 
+        MinHeight="500" MinWidth="500">
     <Grid Background="#E6E4EE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -105,5 +106,9 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+
+        <Label HorizontalAlignment="Center" Grid.Row="11" Grid.Column="5">
+            <TextBlock>A NetDocs Jr<LineBreak/>Production</TextBlock>
+        </Label>  
     </Grid>
 </Window>

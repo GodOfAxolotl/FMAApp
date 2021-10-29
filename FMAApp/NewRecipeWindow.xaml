@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
-        Title="Neues Rezept" Height="250" Width="300">
+        Title="Neues Rezept" Height="250" Width="300" ResizeMode="NoResize">
     <Grid Background="#E6E4FE">
         <StackPanel>
             <TextBlock Text="Name?" FontSize="28" Margin="10,10,0,0"/>

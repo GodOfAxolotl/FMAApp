@@ -22,7 +22,6 @@ namespace FMAApp
     {
 
         Session session;
-        //This is a test
         public MainWindow()
         {
             session = new Session();
