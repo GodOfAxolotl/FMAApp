@@ -23,5 +23,26 @@ namespace FMAApp
         {
             InitializeComponent();
         }
+
+        private void NeueZutatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Zutat hinzufügen
+        }
+
+        private void BearbeitenZutatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Index auslesen, Zutat ändern
+        }
+
+        private void RezeptSpeichenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Rezeptklasse erstellen, Zutaten zu Rezept konvertieren, an Session weiterleiten
+        }
+
+        private void AbbrechenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            
+        }
     }
 }

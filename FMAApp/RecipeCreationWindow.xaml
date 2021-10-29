@@ -36,7 +36,7 @@
                  BorderThickness="2" Grid.RowSpan="8"/>
         
         <Button Name="NeueZutatBtn" Content="Neue Zutat" FontSize="28" 
-                Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3">
+                Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Click="NeueZutatBtn_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -51,7 +51,7 @@
         </Button>
 
         <Button Name="BearbeitenZutatBtn" Content="Zutat Bearbeiten" FontSize="28" 
-                Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3">
+                Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Click="BearbeitenZutatBtn_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -81,7 +81,7 @@
         </Button>
 
         <Button Name="RezeptSpeichenBtn" Content="Speichern &amp; Zurück" FontSize="12" 
-                Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="1">
+                Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="1" Click="RezeptSpeichenBtn_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -96,7 +96,7 @@
         </Button>
 
         <Button Name="AbbrechenBtn" Content="Abbrechen" FontSize="12" Grid.Column="5" 
-                Grid.Row="7" Grid.ColumnSpan="1">
+                Grid.Row="7" Grid.ColumnSpan="1" Click="AbbrechenBtn_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>

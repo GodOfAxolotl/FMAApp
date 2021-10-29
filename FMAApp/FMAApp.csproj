@@ -58,6 +58,7 @@
     <Compile Include="RecipeCreationWindow.xaml.cs">
       <DependentUpon>RecipeCreationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Session.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

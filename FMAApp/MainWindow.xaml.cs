@@ -20,11 +20,12 @@ namespace FMAApp
     /// </summary>
     public partial class MainWindow : Window
     {
-       List<string> list = new List<string>();
+
+        Session session;
         //This is a test
         public MainWindow()
         {
-            list.Add("Foo");
+            session = new Session();
             InitializeComponent();
         }
 
