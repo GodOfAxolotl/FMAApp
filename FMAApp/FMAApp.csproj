@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseNotificationClass.cs" />
+    <Compile Include="Engine\Rezept.cs" />
+    <Compile Include="Engine\Zutat.cs" />
     <Compile Include="RecipeCreationWindow.xaml.cs">
       <DependentUpon>RecipeCreationWindow.xaml</DependentUpon>
     </Compile>
@@ -109,8 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Engine\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

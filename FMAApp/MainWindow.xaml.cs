@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace FMAApp
 {
@@ -21,11 +22,12 @@ namespace FMAApp
     public partial class MainWindow : Window
     {
 
-        Session session;
+        public Session session;
         public MainWindow()
         {
-            session = new Session();
             InitializeComponent();
+            session = new Session();
+            this.DataContext = session;
         }
 
         private void NeuesRezeptBtn_Click(object sender, RoutedEventArgs e)
@@ -59,6 +61,13 @@ namespace FMAApp
             RecipeCreationWindow recipeCreationWindow = new RecipeCreationWindow();
             recipeCreationWindow.Show();
         }
+
+        public void addNewRecepie(string name)
+        {
+            session.addNewRecepie(name);
+        }
+
+
     }
 }
 
