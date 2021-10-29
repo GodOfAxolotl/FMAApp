@@ -24,7 +24,7 @@ namespace FMAApp
         //This is a test
         public MainWindow()
         {
-            list.Add("5 two m8 ohs");
+            list.Add("Foo");
             InitializeComponent();
         }
 

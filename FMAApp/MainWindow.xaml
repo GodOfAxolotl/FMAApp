@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="600">
-    <Grid Background="#E6E4FE">
+    <Grid Background="#E6E4EE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="20*"/>

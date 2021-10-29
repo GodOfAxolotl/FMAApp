@@ -5,8 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
-        Title="RecipeCreationWindow" Height="450" Width="800">
+        Title="RecipeCreationWindow" Height="620" Width="700">
     <Grid>
-        <Label Content="Rezept"></Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="1" Grid.Row="0" FontSize="38" Content="Rezept" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        
+        <ListBox Grid.Row="1" Grid.Column="1" BorderBrush="#BABFD7" 
+                 BorderThickness="2" Grid.RowSpan="8"/>
+        
+        <Button Name="NeueZutatBtn" Content="Neue Zutat" FontSize="28" 
+                Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8E9AAF"/>
+                    <GradientStop Color="#757F91" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Button Name="BearbeitenZutatBtn" Content="Zutat Bearbeiten" FontSize="28" 
+                Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8E9AAF"/>
+                    <GradientStop Color="#757F91" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Button Name="LoescheZutatBtn" Content="Zutat Löschen" FontSize="28" 
+                Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="3">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8E9AAF"/>
+                    <GradientStop Color="#757F91" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Button Name="RezeptSpeichenBtn" Content="Speichern &amp; Zurück" FontSize="12" 
+                Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8E9AAF"/>
+                    <GradientStop Color="#757F91" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <Button Name="AbbrechenBtn" Content="Abbrechen" FontSize="12" Grid.Column="5" 
+                Grid.Row="7" Grid.ColumnSpan="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8E9AAF"/>
+                    <GradientStop Color="#757F91" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
