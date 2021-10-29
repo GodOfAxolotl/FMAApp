@@ -11,7 +11,7 @@ namespace FMAApp
     public class BaseNotificationClass : INotifyPropertyChanged
     {
 
-        //Base Notification Class to be implemented by all classes who want to invoke the Window
+        //Base Notification Class to be implemented by all classes who want to invoke the Window.
 
         public event PropertyChangedEventHandler PropertyChanged;
 
