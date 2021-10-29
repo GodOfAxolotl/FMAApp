@@ -35,9 +35,12 @@
             <Label Content="Rezepte" Grid.Row="0" Grid.Column="0" FontSize="32" HorizontalAlignment="Center" Foreground="#161B25" />
         </Border>
 
-        <ListBox Name="RezeptCollection" Grid.Column="1" ItemsSource="{Binding Path=rezepte}" DisplayMemberPath="name"
-                 Grid.Row="1" Grid.RowSpan="9" BorderBrush="#BABFD7" BorderThickness="2">
-
+        <ListBox Name="RezeptCollection" Grid.Column="1" ItemsSource="{Binding Path=rezepte}" Grid.Row="1" Grid.RowSpan="9" BorderBrush="#BABFD7" BorderThickness="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding name}" FontSize="28"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
 
 

@@ -11,12 +11,11 @@ namespace FMAApp
     public class Session : BaseNotificationClass
     {
 
-        public ObservableCollection<Rezept> rezepte { get; set; }
+        public static ObservableCollection<Rezept> rezepte { get; set; }
 
         public Session()
         {
             rezepte = new ObservableCollection<Rezept>();
-            rezepte.Add(new Rezept("test"));
         }
 
         public void loop(object sender, EventArgs e)
@@ -29,7 +28,7 @@ namespace FMAApp
             OnPropertyChanged(nameof(rezepte));
         }
 
-        public  void addNewRecepie(string name)
+        public static void addNewRecepie(string name)
         {
             rezepte.Add(new Rezept(name));
         }

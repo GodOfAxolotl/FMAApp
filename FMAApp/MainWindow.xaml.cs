@@ -64,7 +64,7 @@ namespace FMAApp
 
         public void addNewRecepie(string name)
         {
-            session.addNewRecepie(name);
+            Session.addNewRecepie(name);
         }
 
 

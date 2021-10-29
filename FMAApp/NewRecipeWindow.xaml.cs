@@ -34,7 +34,7 @@ namespace FMAApp
         {
             Close();
             MainWindow.rezeptFensterÖffnen();
-            //MainWindow.addNewRecepie(NameTextBox.Text);
+            Session.addNewRecepie(NameTextBox.Text);
         }
     }
 }
