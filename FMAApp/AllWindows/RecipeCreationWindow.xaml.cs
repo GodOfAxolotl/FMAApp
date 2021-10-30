@@ -19,14 +19,19 @@ namespace FMAApp
     /// </summary>
     public partial class RecipeCreationWindow : Window
     {
+
+        public int rezeptID;
         public RecipeCreationWindow()
         {
             InitializeComponent();
+            var bc = new BrushConverter();
+            this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+            DataContext = this;
         }
 
         private void NeueZutatBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Zutat hinzufügen
+            MainWindow.zutatFensterÖffnen();
         }
 
         private void BearbeitenZutatBtn_Click(object sender, RoutedEventArgs e)

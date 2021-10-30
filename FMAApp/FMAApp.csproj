@@ -58,7 +58,10 @@
     <Compile Include="BaseNotificationClass.cs" />
     <Compile Include="Engine\Rezept.cs" />
     <Compile Include="Engine\Zutat.cs" />
-    <Compile Include="RecipeCreationWindow.xaml.cs">
+    <Compile Include="AllWindows\NewIngredientWindow.xaml.cs">
+      <DependentUpon>NewIngredientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AllWindows\RecipeCreationWindow.xaml.cs">
       <DependentUpon>RecipeCreationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Session.cs" />
@@ -74,17 +77,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NewRecipeWindow.xaml">
+    <Page Include="AllWindows\NewIngredientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RecipeCreationWindow.xaml">
+    <Page Include="AllWindows\NewRecipeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AllWindows\RecipeCreationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewRecipeWindow.xaml.cs">
+    <Compile Include="AllWindows\NewRecipeWindow.xaml.cs">
       <DependentUpon>NewRecipeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -112,6 +119,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Grafiken\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
