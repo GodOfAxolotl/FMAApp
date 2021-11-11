@@ -19,23 +19,26 @@ namespace FMAApp
     /// </summary>
     public partial class NewRecipeWindow : Window
     {
-        public event EventHandler updateEvent;
+        public event EventHandler updateEvent; //Event zur Synchronisierung des Rezeptnamens mit dem ViewModel, welches das Rezept initialisiert 
+
+
         public NewRecipeWindow()
         {
             InitializeComponent();
-
             this.Loaded += new RoutedEventHandler(NewRecepie_Loaded);
 
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
         } 
 
+        //Methode zum ABrufen des Eventhandlers
         protected void OnUpdateEvent()
         {
             if(this.updateEvent != null)
                 this.updateEvent(this, EventArgs.Empty);
         }
 
+        //Keine Ahnung ehrlichgesagt, ist trotzdem wichtig
         void NewRecepie_Loaded(object sender, RoutedEventArgs e)
         {
             this.OnUpdateEvent();
@@ -46,9 +49,10 @@ namespace FMAApp
             Close();
         }
 
+        //Rezept im RezeptHandler hinzufügen und VM über die Änderung informieren- Ist das die best practice? Auf keinen Fall. Aber ist es eine good practice? Wahrscheinlich nicht.
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            RezeptHandler.addRecepie(NameTextBox.Text, this);
+            RezeptHandler.addRecipe(NameTextBox.Text);
             OnUpdateEvent();
             Close();
         }

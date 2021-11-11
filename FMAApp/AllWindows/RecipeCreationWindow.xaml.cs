@@ -15,22 +15,24 @@ using System.Windows.Shapes;
 
 namespace FMAApp
 {
-    /// <summary>
-    /// Interaktionslogik für RecipeCreationWindow.xaml
-    /// </summary>
+
     public partial class RecipeCreationWindow : Window
     {
         int idx;
         public ObservableCollection<Zutat> ingList { get; set; }
+
+
         public RecipeCreationWindow(int idx)
         {
             InitializeComponent();
             ingList = new ObservableCollection<Zutat>();
             this.idx = idx;
+            DataContext = this;
+
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
-            DataContext = this;
         }
+
 
         private void NeueZutatBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -39,6 +41,7 @@ namespace FMAApp
             newIngredientWindow.Show();
         }
 
+        //Zieht sich die Zutatenliste aus der Klasse, die die Methode aufruft. Schlechter Name für eine Schlechte Methode
         public void pullIngridientList(List<Zutat> listtopull)
         {
             ingList.Clear();

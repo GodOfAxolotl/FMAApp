@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace FMAApp
 {
-    /// <summary>
-    /// Interaktionslogik für NewIngredientWindow.xaml
-    /// </summary>
     public partial class NewIngredientWindow : Window
     {
         int index;
@@ -28,6 +25,7 @@ namespace FMAApp
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
         }
 
+        //Dem verantwortlichen Rezept wird eine Zutat hinzugefügt, den Index des Rezeptes kennt es seit Initialisierung
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             RezeptHandler.rezepte[index].addIngredient(ingredientNameTextBox.Text, (int)amountSlider.Value);

@@ -21,8 +21,8 @@ namespace FMAApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public Session session;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,32 +35,35 @@ namespace FMAApp
 
         }
 
+        //Klick auf den Neuen Rezept Knopf --> Fenster zur erstellung eines Rezept öffnen, Besitzer festlegen und Anzeigen
         private void NeuesRezeptBtn_Click(object sender, RoutedEventArgs e)
         {
             NewRecipeWindow newRecipeWindow = new NewRecipeWindow();
             newRecipeWindow.Owner = this;
             newRecipeWindow.updateEvent += session.loop;
+            //Der updateEvent Eventhandler sorgt dafür, dass bei der erstellung des Rezeptes, die Werte einmal mit dem ViewModel synchronisiert werden
             newRecipeWindow.Show();
         }
 
         private void RezeptBearbeitenBtn_Click(object sender, RoutedEventArgs e)
         {
             RezeptHandler.rezepte[RezeptCollection.SelectedIndex].showWindow(RezeptCollection.SelectedIndex);
+            //TODO: Anzeige glitcht, die Zutaten sind da, werden aber erst nach dem hinzufügen einer neuen angezeigt
         }
 
         private void RezeptLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO: Rezept am ausgewählten Index Löschen, alle Indexe der Rezepte müssen aufrücken
         }
 
         private void AllesLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO: Alles Zurücksetzen, Indexe, Rezepte, Zutaten
         }
 
         private void SpeichernAufDiskBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO: Listen in Textdatei umwandeln
         }
 
 

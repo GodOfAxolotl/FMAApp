@@ -12,12 +12,14 @@ namespace FMAApp
     {
         public ObservableCollection<Rezept> rezepte { get; set; }
 
-        DispatcherTimer timer = new DispatcherTimer();
+
         public Session()
         {
             rezepte = new ObservableCollection<Rezept>();
         }
 
+
+        //Methode zur Synchronisierung der Rezeptliste, die die View für das Bindung nutzt und der Sammlung des Models. Do not Touch, it works
         public void loop(object sender, EventArgs e)
         {
             rezepte.Clear();
@@ -28,6 +30,7 @@ namespace FMAApp
             update();
         }
 
+        //Unwichtig, soll Sachen zum aufwecken der GUI enthalten
         private void update()
         {
             OnPropertyChanged(nameof(rezepte));

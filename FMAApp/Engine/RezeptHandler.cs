@@ -18,11 +18,14 @@ namespace FMAApp
         }
 
 
-        public static void addRecepie(String name, Window sender)
+        //Neues Rezept + Rezeptfenster
+        public static void addRecipe(String name)
         {
-            rezepte.Add(new Rezept(name, sender));
+            rezepte.Add(new Rezept(name));
         }
 
+
+        //TODO: delete methode die index aufrücken kann
 
 
 
