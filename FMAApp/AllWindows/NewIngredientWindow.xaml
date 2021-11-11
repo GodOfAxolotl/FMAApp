@@ -29,7 +29,7 @@
         <TextBox Name="ingredientNameTextBox" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="1" />
 
         <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Content="Menge der Zutat"></Label>
-        <Slider Name="amountTextBox" Grid.Row="5" Grid.Column="1"  Grid.ColumnSpan="3" Maximum="10" Minimum="1" SmallChange="1" Value="1" TickPlacement="Both" />
+        <Slider Name="amountSlider" Grid.Row="5" Grid.Column="1"  Grid.ColumnSpan="3" Maximum="10" Minimum="1" SmallChange="1" Value="1" TickPlacement="Both" />
 
         <Button x:Name="CancelBtn" Content="Abbrechen" Grid.Row="6" Grid.Column="1" Margin="4,4,4,4" Click="CancelBtn_Click">
             <Button.Resources>

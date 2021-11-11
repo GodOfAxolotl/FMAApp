@@ -10,9 +10,9 @@ namespace FMAApp
 {
     public class Session : BaseNotificationClass
     {
+        public ObservableCollection<Rezept> rezepte { get; set; }
 
-        public static ObservableCollection<Rezept> rezepte { get; set; }
-
+        DispatcherTimer timer = new DispatcherTimer();
         public Session()
         {
             rezepte = new ObservableCollection<Rezept>();
@@ -20,17 +20,17 @@ namespace FMAApp
 
         public void loop(object sender, EventArgs e)
         {
+            rezepte.Clear();
+            foreach(Rezept rezept in RezeptHandler.rezepte)
+            {
+                rezepte.Add(rezept);
+            }
             update();
         }
 
         private void update()
         {
             OnPropertyChanged(nameof(rezepte));
-        }
-
-        public static void addNewRecepie(string name)
-        {
-            rezepte.Add(new Rezept(name));
         }
 
     }

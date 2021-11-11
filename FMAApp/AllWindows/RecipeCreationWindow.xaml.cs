@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,13 @@ namespace FMAApp
     /// </summary>
     public partial class RecipeCreationWindow : Window
     {
-
-        public int rezeptID;
-        public RecipeCreationWindow()
+        int idx;
+        public ObservableCollection<Zutat> ingList { get; set; }
+        public RecipeCreationWindow(int idx)
         {
             InitializeComponent();
+            ingList = new ObservableCollection<Zutat>();
+            this.idx = idx;
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
             DataContext = this;
@@ -31,7 +34,18 @@ namespace FMAApp
 
         private void NeueZutatBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.zutatFensterÖffnen();
+            NewIngredientWindow newIngredientWindow = new NewIngredientWindow(idx);
+            newIngredientWindow.Owner = this;
+            newIngredientWindow.Show();
+        }
+
+        public void pullIngridientList(List<Zutat> listtopull)
+        {
+            ingList.Clear();
+            foreach (Zutat ing in listtopull)
+            {
+                ingList.Add(ing);
+            }
         }
 
         private void BearbeitenZutatBtn_Click(object sender, RoutedEventArgs e)

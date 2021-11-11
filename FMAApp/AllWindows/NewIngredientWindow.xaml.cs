@@ -19,17 +19,19 @@ namespace FMAApp
     /// </summary>
     public partial class NewIngredientWindow : Window
     {
-        public NewIngredientWindow()
+        int index;
+        public NewIngredientWindow(int index)
         {
             InitializeComponent();
+            this.index = index;
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            RezeptHandler.rezepte[index].addIngredient(ingredientNameTextBox.Text, (int)amountSlider.Value);
             Close();
-            Session.rezepte[0].addIngredient(ingredientNameTextBox.Text, 1);
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

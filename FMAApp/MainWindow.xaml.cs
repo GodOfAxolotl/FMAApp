@@ -26,6 +26,7 @@ namespace FMAApp
         public MainWindow()
         {
             InitializeComponent();
+            RezeptHandler.setup();
             session = new Session();
             this.DataContext = session;
 
@@ -37,12 +38,14 @@ namespace FMAApp
         private void NeuesRezeptBtn_Click(object sender, RoutedEventArgs e)
         {
             NewRecipeWindow newRecipeWindow = new NewRecipeWindow();
+            newRecipeWindow.Owner = this;
+            newRecipeWindow.updateEvent += session.loop;
             newRecipeWindow.Show();
         }
 
         private void RezeptBearbeitenBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            RezeptHandler.rezepte[RezeptCollection.SelectedIndex].showWindow(RezeptCollection.SelectedIndex);
         }
 
         private void RezeptLöschenBtn_Click(object sender, RoutedEventArgs e)
@@ -58,23 +61,6 @@ namespace FMAApp
         private void SpeichernAufDiskBtn_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        public static void rezeptFensterÖffnen()
-        {
-            RecipeCreationWindow recipeCreationWindow = new RecipeCreationWindow();
-            recipeCreationWindow.Show();
-        }
-
-        public static void zutatFensterÖffnen()
-        {
-            NewIngredientWindow newIngredientWindow = new NewIngredientWindow();
-            newIngredientWindow.Show();
-        }
-
-        public void addNewRecepie(string name)
-        {
-            Session.addNewRecepie(name);
         }
 
 

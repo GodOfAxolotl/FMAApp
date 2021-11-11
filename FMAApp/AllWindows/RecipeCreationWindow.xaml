@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
-        Title="RecipeCreationWindow" Height="620" Width="700">
+        Title="Rezept Erstellen" Height="620" Width="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -33,7 +33,7 @@
                HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <ListBox Grid.Row="1" Grid.Column="1" BorderBrush="#BABFD7" 
-                 BorderThickness="2" Grid.RowSpan="8" ItemsSource="{Binding Path=rezepte[0].neuesRezept}">
+                 BorderThickness="2" Grid.RowSpan="8" ItemsSource="{Binding Path=ingList}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding ingredient}" FontSize="28"/>
