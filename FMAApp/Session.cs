@@ -34,4 +34,13 @@ namespace FMAApp
         }
 
     }
+
+    public static class Globals
+    {
+        public static string btnColor1 = "#8E9AAF";
+        public static string btnColor2 = "#757F91";
+
+        public static string backgroundColor = "#E6E4EE";
+
+    }
 }

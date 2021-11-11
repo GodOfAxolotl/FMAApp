@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FMAApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="600" 
+        Title="Futtermischer" Height="650" Width="600" 
         MinHeight="500" MinWidth="500">
-    <Grid Background="#E6E4EE">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="20*"/>
@@ -35,13 +35,24 @@
             <Label Content="Rezepte" Grid.Row="0" Grid.Column="0" FontSize="32" HorizontalAlignment="Center" Foreground="#161B25" />
         </Border>
 
-        <ListBox Name="RezeptCollection" Grid.Column="1" ItemsSource="{Binding Path=rezepte}" Grid.Row="1" Grid.RowSpan="9" BorderBrush="#BABFD7" BorderThickness="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding name}" FontSize="28"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <TabControl Grid.Row="1" Grid.RowSpan="9" Grid.Column="1">
+            <TabItem Header="Rezepte" Name="recepieTabItem">
+                <ListBox Name="RezeptCollection" Grid.Column="1" ItemsSource="{Binding Path=rezepte}" Grid.Row="1" Grid.RowSpan="9" BorderBrush="#BABFD7" BorderThickness="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding name}" FontSize="28"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+            <TabItem Header="Cardridges" Name="cardridgeTabItem">
+                <TextBlock>
+                    Test
+                </TextBlock>
+            </TabItem>
+        </TabControl>
+
+       
 
 
         <Button Name="NeuesRezeptBtn" Content="Neues Rezept" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" BorderBrush="#757F91" BorderThickness="2" FontSize="18" Foreground="#161B25" Click="NeuesRezeptBtn_Click">

@@ -15,26 +15,26 @@ using System.Windows.Shapes;
 namespace FMAApp
 {
     /// <summary>
-    /// Interaktionslogik für NewRecipeWindow.xaml
+    /// Interaktionslogik für NewIngredientWindow.xaml
     /// </summary>
-    public partial class NewRecipeWindow : Window
+    public partial class NewIngredientWindow : Window
     {
-
-        public NewRecipeWindow()
+        public NewIngredientWindow()
         {
             InitializeComponent();
+            var bc = new BrushConverter();
+            this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
         }
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
+            Session.rezepte[0].addIngredient(ingredientNameTextBox.Text, 1);
         }
 
-        private void createButton_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
-            MainWindow.rezeptFensterÖffnen();
-            Session.addNewRecepie(NameTextBox.Text);
         }
     }
 }

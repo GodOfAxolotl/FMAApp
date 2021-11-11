@@ -39,5 +39,10 @@ namespace FMAApp
             this.ingredient = ingredient;
             this.menge = menge;
         }
+
+        public override string ToString()
+        {
+            return ingredient;
+        }
     }
 }

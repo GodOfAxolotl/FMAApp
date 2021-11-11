@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace FMAApp
 {
     public class Rezept
     {
-        private List<Zutat> neuesRezept;
+        public ObservableCollection<Zutat> neuesRezept { get; set; }
         public string name { get; private set; }
         public Rezept(string name)
         {
-            neuesRezept = new List<Zutat>();
+            neuesRezept = new ObservableCollection<Zutat>();
             this.name = name;
         }
 

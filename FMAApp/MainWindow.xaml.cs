@@ -17,7 +17,7 @@ using System.Windows.Threading;
 namespace FMAApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml 
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -28,6 +28,10 @@ namespace FMAApp
             InitializeComponent();
             session = new Session();
             this.DataContext = session;
+
+            var bc = new BrushConverter();
+            this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+
         }
 
         private void NeuesRezeptBtn_Click(object sender, RoutedEventArgs e)
@@ -60,6 +64,12 @@ namespace FMAApp
         {
             RecipeCreationWindow recipeCreationWindow = new RecipeCreationWindow();
             recipeCreationWindow.Show();
+        }
+
+        public static void zutatFensterÖffnen()
+        {
+            NewIngredientWindow newIngredientWindow = new NewIngredientWindow();
+            newIngredientWindow.Show();
         }
 
         public void addNewRecepie(string name)
