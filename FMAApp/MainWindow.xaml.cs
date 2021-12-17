@@ -47,17 +47,28 @@ namespace FMAApp
 
         private void RezeptBearbeitenBtn_Click(object sender, RoutedEventArgs e)
         {
-            RezeptHandler.rezepte[RezeptCollection.SelectedIndex].showWindow(RezeptCollection.SelectedIndex);
+            try
+            {
+                RezeptHandler.rezepte[RezeptCollection.SelectedIndex].showWindow(RezeptCollection.SelectedIndex);
+            } catch(ArgumentOutOfRangeException ex)
+            {
+                RezeptCollection.SelectedIndex = -1;
+            }
             //TODO: Anzeige glitcht, die Zutaten sind da, werden aber erst nach dem hinzufügen einer neuen angezeigt
         }
 
         private void RezeptLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
+            RezeptHandler.deleteAt(RezeptCollection.SelectedIndex);
+            session.loop(this, EventArgs.Empty);
             //TODO: Rezept am ausgewählten Index Löschen, alle Indexe der Rezepte müssen aufrücken
         }
 
         private void AllesLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
+            RezeptHandler.deleteAllRecipe();
+            session.loop(this, EventArgs.Empty);
+            RezeptCollection.SelectedIndex = -1;
             //TODO: Alles Zurücksetzen, Indexe, Rezepte, Zutaten
         }
 

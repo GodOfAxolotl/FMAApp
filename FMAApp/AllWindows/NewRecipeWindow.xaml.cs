@@ -52,9 +52,16 @@ namespace FMAApp
         //Rezept im RezeptHandler hinzufügen und VM über die Änderung informieren- Ist das die best practice? Auf keinen Fall. Aber ist es eine good practice? Wahrscheinlich nicht.
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            RezeptHandler.addRecipe(NameTextBox.Text);
-            OnUpdateEvent();
-            Close();
+            if (NameTextBox.Text != "" && NameTextBox.Text.Length < 30)
+            {
+                RezeptHandler.addRecipe(NameTextBox.Text);
+                OnUpdateEvent();
+                Close();
+            } else
+            {
+                MessageBox.Show("Text muss zwischen 1 und 30 Zeichen lang sein", "Warnung", MessageBoxButton.OK);
+                NameTextBox.Text = "";
+            }
         }
     }
 }

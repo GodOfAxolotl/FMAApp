@@ -25,7 +25,20 @@ namespace FMAApp
         }
 
 
-        //TODO: delete methode die index aufrücken kann
+        public static void deleteAt(int idx)
+        {
+            rezepte.RemoveAt(idx);
+            Rezept.staticIndex--;
+        }
+
+        public static void deleteAllRecipe()
+        {
+            rezepte.Clear();
+            Rezept.staticIndex = 0;
+        }
+        //Delete Methoden die die statische Indexierung Auflösen
+
+        
 
 
 
