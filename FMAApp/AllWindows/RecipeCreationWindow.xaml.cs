@@ -21,6 +21,8 @@ namespace FMAApp
         int idx;
         public ObservableCollection<Zutat> ingList { get; set; }
 
+        notifier updater = new notifier();
+
 
         public RecipeCreationWindow(int idx)
         {
@@ -41,6 +43,17 @@ namespace FMAApp
             newIngredientWindow.Show();
         }
 
+        private void RezeptSpeichenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void LoescheZutatBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ingList.RemoveAt(IngredientCollection.SelectedIndex);
+            pushIngridientList();
+        }
+
         //Zieht sich die Zutatenliste aus der Klasse, die die Methode aufruft. Schlechter Name für eine Schlechte Methode
         public void pullIngridientList(List<Zutat> listtopull)
         {
@@ -51,20 +64,27 @@ namespace FMAApp
             }
         }
 
-        private void BearbeitenZutatBtn_Click(object sender, RoutedEventArgs e)
+        public void pushIngridientList()
         {
-            //Index auslesen, Zutat ändern
+            RezeptHandler.rezepte[idx].neuesRezept.Clear();
+            foreach(var ing in ingList)
+            {
+                RezeptHandler.rezepte[idx].neuesRezept.Add(ing);
+            }
+
+        }
+    }
+
+    public class notifier : BaseNotificationClass
+    {
+        public notifier()
+        {
+
         }
 
-        private void RezeptSpeichenBtn_Click(object sender, RoutedEventArgs e)
+        public void notifyOfChange(object o)
         {
-            //TODO: Rezeptklasse erstellen, Zutaten zu Rezept konvertieren, an Session weiterleiten
-        }
-
-        private void AbbrechenBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            
+            OnPropertyChanged(nameof(o));
         }
     }
 }

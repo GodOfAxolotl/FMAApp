@@ -38,6 +38,10 @@ namespace FMAApp
         }
         //Delete Methoden die die statische Indexierung Auflösen
 
+        public static void deleteIng(int ingRec, int ingidx)
+        {
+            rezepte[ingRec].neuesRezept.RemoveAt(ingidx);
+        }
         
 
 

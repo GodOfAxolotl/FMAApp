@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,10 +76,83 @@ namespace FMAApp
 
         private void SpeichernAufDiskBtn_Click(object sender, RoutedEventArgs e)
         {
+            var fileContent = string.Empty;
+            var filePath = string.Empty;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "ALK files (*.alk)|*.alk|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                filePath = openFileDialog.FileName;
+                if(filePath.StartsWith("."))
+                {
+                    MessageBox.Show("Could not save file at " + filePath, "no yay", MessageBoxButton.OK);
+                    openFileDialog = null;
+                    return;
+                }
+                
+            } else
+            {
+                MessageBox.Show("Could not save file", "no yay", MessageBoxButton.OK);
+                openFileDialog = null;
+                return;
+            }
+
+            string[] file = convert_RezeptListeNachString();
+            save_file(file, filePath);
+            MessageBox.Show("Saved file at: " + filePath, "yay", MessageBoxButton.OK);
+
             //TODO: Listen in Textdatei umwandeln
         }
 
+        private string[] convert_RezeptListeNachString()
+        {
+            string[] file = new string[RezeptHandler.rezepte.Count];
 
+            for(int i = 0; i < RezeptHandler.rezepte.Count; i++)
+            {
+                var sb = new System.Text.StringBuilder();
+                sb.Append("§");
+                //Neuer Anfang für ein Rezept
+                sb.Append(RezeptHandler.rezepte[i].name);
+                sb.Append(":");
+                for(int j = 0; j < RezeptHandler.rezepte[i].neuesRezept.Count; j++)
+                {
+                    sb.Append("[");
+                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].ingredient);
+                    sb.Append(";");
+                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].menge.ToString());
+                    sb.Append("]");
+                    
+                }
+
+                file[i] = sb.ToString();
+            }
+
+            return file;
+        }
+
+        private bool save_file(string[] text, string path)
+        {
+            try
+            {
+                using (StreamWriter outputFile = new StreamWriter(path))
+                {
+                    foreach (string line in text)
+                        outputFile.WriteLine(line);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not save file!");
+                return false;
+            }
+
+            return true;
+            
+        }
     }
 }
 
