@@ -51,8 +51,8 @@ namespace FMAApp
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
             DataContext = this;
-            
-            
+            this.Tag = "child";
+
         }
 
         private void pullListOfCardridges()

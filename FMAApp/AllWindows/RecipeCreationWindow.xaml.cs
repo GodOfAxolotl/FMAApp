@@ -30,6 +30,7 @@ namespace FMAApp
             ingList = new ObservableCollection<Zutat>();
             this.idx = idx;
             DataContext = this;
+            this.Tag = "child";
 
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);

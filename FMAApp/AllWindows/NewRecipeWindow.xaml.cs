@@ -29,6 +29,8 @@ namespace FMAApp
 
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+
+            this.Tag = "child";
         } 
 
         //Methode zum ABrufen des Eventhandlers

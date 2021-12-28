@@ -35,6 +35,7 @@ namespace FMAApp
 
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+            this.Tag = "parent";
 
             box1Content.Text = "Igel";
             box2Content.Text = "Wasser";
@@ -44,6 +45,8 @@ namespace FMAApp
             box6Content.Text = "Edelstahl";
             box7Content.Text = "Zitronenmelisse";
             box8Content.Text = "Premium Wodka";
+
+            applyContainers();
 
         }
 
@@ -71,6 +74,7 @@ namespace FMAApp
 
         private void RezeptLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
+            RezeptHandler.rezepte[RezeptCollection.SelectedIndex].RecipeWindow.Close();
             RezeptHandler.deleteAt(RezeptCollection.SelectedIndex);
             session.loop(this, EventArgs.Empty);
             //TODO: Rezept am ausgewählten Index Löschen, alle Indexe der Rezepte müssen aufrücken
@@ -78,14 +82,27 @@ namespace FMAApp
 
         private void AllesLöschenBtn_Click(object sender, RoutedEventArgs e)
         {
-            RezeptHandler.deleteAllRecipe();
-            session.loop(this, EventArgs.Empty);
-            RezeptCollection.SelectedIndex = -1;
-            //TODO: Alles Zurücksetzen, Indexe, Rezepte, Zutaten
+            if (MessageBox.Show("Sind Sie sicher, dass Sie alle \nRezepte unwiederruflich löschen wollen?", "Löschen?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                RezeptHandler.deleteAllRecipe();
+                session.loop(this, EventArgs.Empty);
+                RezeptCollection.SelectedIndex = -1;
+
+                foreach (Window item in App.Current.Windows)
+                {
+                    if (item != this)
+                        item.Close();
+                }
+            }
+
         }
 
         private void SpeichernAufDiskBtn_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Wähle die zu überschreibende .alk Datei auf \n" +
+                            "der Card oder erstelle eine neue .alk Datei \n" +
+                            "(leere Datei mit Endung .alk)", "Speichern");
+
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
@@ -180,6 +197,24 @@ namespace FMAApp
         }
 
         private void applyContainerButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Dieser Vorgang löscht alle ihre vorherigen Rezepte. \nSind Sie sicher, dass alle Felder fehlerfrei sind?", "Zutaten anwenden", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                applyContainers();
+
+                RezeptHandler.deleteAllRecipe();
+                session.loop(this, EventArgs.Empty);
+                RezeptCollection.SelectedIndex = -1;
+
+                foreach (Window item in App.Current.Windows)
+                {
+                    if (item != this)
+                        item.Close();
+                }
+            }
+        }
+
+        private void applyContainers()
         {
             ContainerHandler.cardridges[0] = box1Content.Text;
             ContainerHandler.cardridges[1] = box2Content.Text;
