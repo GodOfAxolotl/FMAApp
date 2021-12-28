@@ -34,9 +34,16 @@ namespace FMAApp
             }
         }
 
-        public Zutat(string ingredient, int menge)
+        private int _idx;
+        public int idx
+        {
+            get; set;
+        }
+
+        public Zutat(string ingredient, int idx, int menge)
         {
             this.ingredient = ingredient;
+            this.idx = idx;
             this.menge = menge;
         }
 

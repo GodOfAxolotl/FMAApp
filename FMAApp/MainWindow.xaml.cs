@@ -18,9 +18,9 @@ using System.Windows.Threading;
 
 namespace FMAApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml 
-    /// </summary>
+    /*
+     TODO: Rezepte durchparsen wenn änderungen an den Containern gemacht werden, alle Rezepte Löschen
+     */
     public partial class MainWindow : Window
     {
         public Session session;
@@ -119,11 +119,26 @@ namespace FMAApp
 
         private string[] convert_RezeptListeNachString()
         {
-            string[] file = new string[RezeptHandler.rezepte.Count];
+            string[] file = new string[100];
+            file[0] = "RE";
+
+            var sb = new StringBuilder();
+            sb.Append("!");
+            
+            for(int i = 0; i < ContainerHandler.cardridges.Count; i++)
+            {
+                sb.Append("[");
+                sb.Append(ContainerHandler.cardridges[i]);
+                sb.Append(":");
+                sb.Append(i);
+                sb.Append("]");
+            }
+
+            file[1] = sb.ToString();
 
             for(int i = 0; i < RezeptHandler.rezepte.Count; i++)
             {
-                var sb = new System.Text.StringBuilder();
+                sb = new StringBuilder();
                 sb.Append("§");
                 //Neuer Anfang für ein Rezept
                 sb.Append(RezeptHandler.rezepte[i].name);
@@ -131,14 +146,14 @@ namespace FMAApp
                 for(int j = 0; j < RezeptHandler.rezepte[i].neuesRezept.Count; j++)
                 {
                     sb.Append("[");
-                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].ingredient);
+                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].idx);
                     sb.Append(";");
                     sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].menge.ToString());
                     sb.Append("]");
                     
                 }
 
-                file[i] = sb.ToString();
+                file[i+2] = sb.ToString();
             }
 
             return file;

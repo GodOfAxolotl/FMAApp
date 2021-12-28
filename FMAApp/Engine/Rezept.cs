@@ -57,9 +57,9 @@ namespace FMAApp
 
         }
 
-        public void addIngredient(string name, int amount)
+        public void addIngredient(string name, int idx, int amount)
         {
-            neuesRezept.Add(new Zutat(name, amount));
+            neuesRezept.Add(new Zutat(name, idx, amount));
             RecipeWindow.pullIngridientList(neuesRezept); //Synchro mit der View
 
         }

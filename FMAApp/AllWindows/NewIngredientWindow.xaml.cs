@@ -69,7 +69,7 @@ namespace FMAApp
         {
             if (IngredientPicker.SelectedIndex != -1)
             {
-                RezeptHandler.rezepte[index].addIngredient(ContainerHandler.cardridges[IngredientPicker.SelectedIndex], (int)amountSlider.Value);
+                RezeptHandler.rezepte[index].addIngredient(ContainerHandler.cardridges[IngredientPicker.SelectedIndex], IngredientPicker.SelectedIndex, (int)amountSlider.Value);
             } else
             {
                 MessageBox.Show("Auswahl darf nicht leer sein!", "Falsche Auswahl", MessageBoxButton.OK);

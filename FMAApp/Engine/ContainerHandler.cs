@@ -21,6 +21,14 @@ namespace FMAApp
                 cardridges.Add("Zutat " + i.ToString());
             }
         }
+
+        public static string getIngByIndex(int idx)
+        {
+            if(idx < 8)
+                return cardridges[idx];
+
+            return "null";
+        }
     }
 
 }
