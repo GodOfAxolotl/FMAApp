@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseNotificationClass.cs" />
+    <Compile Include="Engine\ContainerHandler.cs" />
     <Compile Include="Engine\Rezept.cs" />
     <Compile Include="Engine\Zutat.cs" />
     <Compile Include="AllWindows\NewIngredientWindow.xaml.cs">

@@ -27,8 +27,14 @@ namespace FMAApp
 
         public static void deleteAt(int idx)
         {
-            rezepte.RemoveAt(idx);
-            Rezept.staticIndex--;
+            try
+            {
+                rezepte.RemoveAt(idx);
+                Rezept.staticIndex--;
+            } catch(Exception ex)
+            {
+                
+            }
         }
 
         public static void deleteAllRecipe()

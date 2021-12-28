@@ -50,8 +50,14 @@ namespace FMAApp
 
         private void LoescheZutatBtn_Click(object sender, RoutedEventArgs e)
         {
-            ingList.RemoveAt(IngredientCollection.SelectedIndex);
-            pushIngridientList();
+            try
+            {
+                ingList.RemoveAt(IngredientCollection.SelectedIndex);
+                pushIngridientList();
+            } catch(Exception ex)
+            {
+
+            }
         }
 
         //Zieht sich die Zutatenliste aus der Klasse, die die Methode aufruft. Schlechter Name für eine Schlechte Methode
@@ -64,6 +70,7 @@ namespace FMAApp
             }
         }
 
+        //Schiebt die Liste in die übergreifende Rezeptverwaltung um Änderungen von hieraus permanent zu machena
         public void pushIngridientList()
         {
             RezeptHandler.rezepte[idx].neuesRezept.Clear();

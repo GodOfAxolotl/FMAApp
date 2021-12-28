@@ -29,11 +29,21 @@ namespace FMAApp
         {
             InitializeComponent();
             RezeptHandler.setup();
+            ContainerHandler.setup();
             session = new Session();
             this.DataContext = session;
 
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+
+            box1Content.Text = "Igel";
+            box2Content.Text = "Wasser";
+            box3Content.Text = "Chlor";
+            box4Content.Text = "Tomate";
+            box5Content.Text = "Apfel";
+            box6Content.Text = "Edelstahl";
+            box7Content.Text = "Zitronenmelisse";
+            box8Content.Text = "Premium Wodka";
 
         }
 
@@ -152,6 +162,18 @@ namespace FMAApp
 
             return true;
             
+        }
+
+        private void applyContainerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContainerHandler.cardridges[0] = box1Content.Text;
+            ContainerHandler.cardridges[1] = box2Content.Text;
+            ContainerHandler.cardridges[2] = box3Content.Text;
+            ContainerHandler.cardridges[3] = box4Content.Text;
+            ContainerHandler.cardridges[4] = box5Content.Text;
+            ContainerHandler.cardridges[5] = box6Content.Text;
+            ContainerHandler.cardridges[6] = box7Content.Text;
+            ContainerHandler.cardridges[7] = box8Content.Text;
         }
     }
 }

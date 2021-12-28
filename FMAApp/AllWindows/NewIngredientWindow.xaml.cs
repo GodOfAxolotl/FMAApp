@@ -17,18 +17,64 @@ namespace FMAApp
     public partial class NewIngredientWindow : Window
     {
         int index;
+
+        private List<string> _cardridges;
+        public List<string> cardridges
+        {
+            get
+            {
+                List<string> editedList = new List<string>();
+                foreach(var s in ContainerHandler.cardridges)
+                {
+                    if(!string.IsNullOrEmpty(s) && !string.IsNullOrWhiteSpace(s))
+                    {
+                        editedList.Add(s);
+                    } 
+                }
+                return editedList;
+            }
+            set
+            {
+                _cardridges = value;
+            }
+        }
+
+
         public NewIngredientWindow(int index)
         {
             InitializeComponent();
+            
+            _cardridges = new List<string>();
+            cardridges = new List<string>();
+            pullListOfCardridges();
             this.index = index;
             var bc = new BrushConverter();
             this.Background = (Brush)bc.ConvertFrom(Globals.backgroundColor);
+            DataContext = this;
+            
+            
+        }
+
+        private void pullListOfCardridges()
+        {
+            cardridges.Clear();
+            for(int i = 0; i < 8; i++)
+            {
+                cardridges.Add(ContainerHandler.cardridges[i]);
+            }
         }
 
         //Dem verantwortlichen Rezept wird eine Zutat hinzugefügt, den Index des Rezeptes kennt es seit Initialisierung
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            RezeptHandler.rezepte[index].addIngredient(ingredientNameTextBox.Text, (int)amountSlider.Value);
+            if (IngredientPicker.SelectedIndex != -1)
+            {
+                RezeptHandler.rezepte[index].addIngredient(ContainerHandler.cardridges[IngredientPicker.SelectedIndex], (int)amountSlider.Value);
+            } else
+            {
+                MessageBox.Show("Auswahl darf nicht leer sein!", "Falsche Auswahl", MessageBoxButton.OK);
+                return;
+            }
             Close();
         }
 
