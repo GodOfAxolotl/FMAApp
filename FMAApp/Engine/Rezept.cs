@@ -25,10 +25,8 @@ namespace FMAApp
             this.name = name;
             internalIndex = staticIndex;
             staticIndex++;
-
             instantiateWindow();
         }
-
 
         private void instantiateWindow()
         {
