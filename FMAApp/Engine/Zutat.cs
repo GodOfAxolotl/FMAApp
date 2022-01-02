@@ -8,37 +8,9 @@ namespace FMAApp
 {
     public class Zutat
     {
-        private string _ingredient;
-        public string ingredient
-        {
-            get
-            {
-                return _ingredient;
-            }
-            set
-            {
-                _ingredient = value;
-            }
-        }
-
-        private int _menge;
-        public int menge
-        {
-            get
-            {
-                return _menge;
-            }
-            set
-            {
-                _menge = value;
-            }
-        }
-
-        private int _idx;
-        public int idx
-        {
-            get; set;
-        }
+        public string ingredient { get; set; }
+        public int idx { get; set; }
+        public int menge { get; set; }
 
         public Zutat(string ingredient, int idx, int menge)
         {

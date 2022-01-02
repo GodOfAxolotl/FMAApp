@@ -11,17 +11,17 @@ namespace FMAApp
 {
     public class Rezept
     {
-        public RecipeCreationWindow RecipeWindow;
-        
-        public List<Zutat> neuesRezept { get; set; }
+
         public string name { get; private set; }
+        public List<Zutat> zutatenliste { get; set; }
         public static int staticIndex = 0;
         public int internalIndex;
+        public RecipeCreationWindow RecipeWindow;
 
 
         public Rezept(string name)
         {
-            neuesRezept = new List<Zutat>();
+            zutatenliste = new List<Zutat>();
             this.name = name;
             internalIndex = staticIndex;
             staticIndex++;
@@ -32,7 +32,7 @@ namespace FMAApp
         {
             RecipeWindow = new RecipeCreationWindow(internalIndex);
             RecipeWindow.Show();
-            RecipeWindow.pullIngridientList(neuesRezept);
+            RecipeWindow.pullIngridientList(zutatenliste);
         }
 
         //was machen Sachen?
@@ -41,7 +41,7 @@ namespace FMAApp
         {
             RecipeWindow = new RecipeCreationWindow(idx);
             RecipeWindow.Show();
-            RecipeWindow.pullIngridientList(neuesRezept);
+            RecipeWindow.pullIngridientList(zutatenliste);
         }
 
         public void showWindow()
@@ -57,14 +57,14 @@ namespace FMAApp
 
         public void addIngredient(string name, int idx, int amount)
         {
-            neuesRezept.Add(new Zutat(name, idx, amount));
-            RecipeWindow.pullIngridientList(neuesRezept); //Synchro mit der View
+            zutatenliste.Add(new Zutat(name, idx, amount));
+            RecipeWindow.pullIngridientList(zutatenliste); //Synchro mit der View
 
         }
 
         public void deleteIngredient(int index)
         {
-            neuesRezept.RemoveAt(index);
+            zutatenliste.RemoveAt(index);
         }
         public override string ToString()
         {

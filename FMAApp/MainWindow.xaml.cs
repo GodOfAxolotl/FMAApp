@@ -101,7 +101,7 @@ namespace FMAApp
         {
             MessageBox.Show("Wähle die zu überschreibende .alk Datei auf \n" +
                             "der Card oder erstelle eine neue .alk Datei \n" +
-                            "(leere Datei mit Endung .alk)", "Speichern");
+                            "(leere Datei mit Endung .alk)", "Speichern", MessageBoxButton.OK, MessageBoxImage.Information);
 
             var fileContent = string.Empty;
             var filePath = string.Empty;
@@ -127,53 +127,16 @@ namespace FMAApp
                 return;
             }
 
-            string[] file = convert_RezeptListeNachString();
+            string[] file = new string[5]; //convert_RezeptListeNachString();
+            file[0] = "{\n";
+            file[1] = "\"Container\" : " + ContainerHandler.ConvertToJson();
+            file[1] += ",";
+            file[3] = "\"Rezepte\" : " + RezeptHandler.ConvertToJson();
+            file[4] = "}";
             save_file(file, filePath);
             MessageBox.Show("Saved file at: " + filePath, "yay", MessageBoxButton.OK);
 
             //TODO: Listen in Textdatei umwandeln
-        }
-
-        private string[] convert_RezeptListeNachString()
-        {
-            string[] file = new string[100];
-            file[0] = "RE";
-
-            var sb = new StringBuilder();
-            sb.Append("!");
-            
-            for(int i = 0; i < ContainerHandler.cardridges.Count; i++)
-            {
-                sb.Append("[");
-                sb.Append(ContainerHandler.cardridges[i]);
-                sb.Append(":");
-                sb.Append(i);
-                sb.Append("]");
-            }
-
-            file[1] = sb.ToString();
-
-            for(int i = 0; i < RezeptHandler.rezepte.Count; i++)
-            {
-                sb = new StringBuilder();
-                sb.Append("§");
-                //Neuer Anfang für ein Rezept
-                sb.Append(RezeptHandler.rezepte[i].name);
-                sb.Append(":");
-                for(int j = 0; j < RezeptHandler.rezepte[i].neuesRezept.Count; j++)
-                {
-                    sb.Append("[");
-                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].idx);
-                    sb.Append(";");
-                    sb.Append(RezeptHandler.rezepte[i].neuesRezept[j].menge.ToString());
-                    sb.Append("]");
-                    
-                }
-
-                file[i+2] = sb.ToString();
-            }
-
-            return file;
         }
 
         private bool save_file(string[] text, string path)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -28,6 +29,15 @@ namespace FMAApp
                 return cardridges[idx];
 
             return "null";
+        }
+
+        public static string ConvertToJson()
+        {
+            List<string> clonedList = new List<string>(cardridges);
+            return JsonConvert.SerializeObject(clonedList, Formatting.Indented, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
         }
     }
 

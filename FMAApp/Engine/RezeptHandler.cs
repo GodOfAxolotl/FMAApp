@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Newtonsoft.Json;
 
 namespace FMAApp
 {
@@ -37,6 +38,19 @@ namespace FMAApp
             }
         }
 
+
+        public static string ConvertToJson()
+        {
+            List<Rezept> clonedList = new List<Rezept>(rezepte);
+            foreach(var c in clonedList)
+            {
+                c.RecipeWindow = null;
+            }
+            return JsonConvert.SerializeObject(clonedList, Formatting.Indented, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+        }
         public static void deleteAllRecipe()
         {
             rezepte.Clear();
@@ -46,7 +60,7 @@ namespace FMAApp
 
         public static void deleteIng(int ingRec, int ingidx)
         {
-            rezepte[ingRec].neuesRezept.RemoveAt(ingidx);
+            rezepte[ingRec].zutatenliste.RemoveAt(ingidx);
         }
         
 

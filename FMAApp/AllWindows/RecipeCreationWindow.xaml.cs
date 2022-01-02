@@ -74,10 +74,10 @@ namespace FMAApp
         //Schiebt die Liste in die übergreifende Rezeptverwaltung um Änderungen von hieraus permanent zu machena
         public void pushIngridientList()
         {
-            RezeptHandler.rezepte[idx].neuesRezept.Clear();
+            RezeptHandler.rezepte[idx].zutatenliste.Clear();
             foreach(var ing in ingList)
             {
-                RezeptHandler.rezepte[idx].neuesRezept.Add(ing);
+                RezeptHandler.rezepte[idx].zutatenliste.Add(ing);
             }
 
         }
